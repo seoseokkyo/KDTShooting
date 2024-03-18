@@ -36,7 +36,7 @@ void AShootingPlayer::BeginPlay()
 	// 문자열 변수 myText를 선언하고, 자신의 이름으로 초기화 하시오
 	// 문자열 포맷 3 - %s : stirng(문자열)
 	// 전달받을 자료형 : FString이 아니라 TCHAR*형태임
-	FString myText = TEXT("서석교");
+	FString myText = L"서석교";
 	TCHAR* cString = myText.GetCharArray().GetData();
 	UE_LOG(LogTemp, Warning, TEXT("my name is %s"), cString);
 
@@ -59,6 +59,11 @@ void AShootingPlayer::BeginPlay()
 	}		
 
 	UE_LOG(LogTemp, Warning, TEXT("%s"), *myIsStudentResult);
+
+	this->age1 = 1;
+	this->age2 = 2;
+	this->age3 = 3;
+	this->age4 = 4;
 }
 
 void AShootingPlayer::Tick(float DeltaTime)
@@ -72,3 +77,30 @@ void AShootingPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 
 }
 
+int32 AShootingPlayer::Multiply(int32 num1, int32 num2)
+{
+	return num1 * num2;
+}
+
+float AShootingPlayer::GetNumberFloat()
+{
+	return numberFloat;
+}
+
+FVector AShootingPlayer::GetLocationVector()
+{
+	return GetTargetLocation();
+}
+
+int32 AShootingPlayer::AddTest(int32 num1, int32 num2)
+{
+	return num1 + num2;
+}
+
+void AShootingPlayer::PrintInputNumber(int32 targetNum)
+{
+	for (int32 i = 0; i <= targetNum; i++)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Number : %02d"), i);
+	}
+}
