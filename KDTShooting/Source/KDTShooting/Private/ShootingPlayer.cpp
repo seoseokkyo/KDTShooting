@@ -46,13 +46,17 @@ void AShootingPlayer::BeginPlay()
 
 	// 그렇지 않으면
 	// My Answer is FALSE 라고 출력한다.
-
+	
 	bool bIsStudent = true;
 	FString myIsStudentResult;
 	if (bIsStudent)
+	{ 
 		myIsStudentResult = TEXT("My Answer is TRUE");
+	}	
 	else
+	{
 		myIsStudentResult = TEXT("My Answer is FALSE");
+	}		
 
 	UE_LOG(LogTemp, Warning, TEXT("%s"), *myIsStudentResult);
 }
@@ -60,7 +64,6 @@ void AShootingPlayer::BeginPlay()
 void AShootingPlayer::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 void AShootingPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
