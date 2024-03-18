@@ -6,6 +6,7 @@
 #include "GameFramework/Pawn.h"
 
 #include "StructTest.h"
+#include "MyActorClassTest.h"
 
 #include "ShootingPlayer.generated.h"
 
@@ -85,4 +86,18 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void PrintInputNumber(int32 targetNum);
+
+	UFUNCTION(BlueprintCallable)
+	void PrintSquare(int32 originNumber);
+
+	UFUNCTION(BlueprintCallable)
+	void PrintSquare2(int32& originNumber);
+
+	void PrintSquare3(int32* originNumber);
+
+	UPROPERTY(EditAnywhere, Category="MySettings")
+	AMyActorClassTest* ActorTest;
+
+	UPROPERTY(EditAnywhere, Category = "MySettings")
+	AActor* CameraActorHandle;
 };

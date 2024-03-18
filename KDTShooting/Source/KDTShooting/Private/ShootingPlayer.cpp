@@ -47,6 +47,8 @@ void AShootingPlayer::BeginPlay()
 	// 그렇지 않으면
 	// My Answer is FALSE 라고 출력한다.
 	
+	// 문자열 포맷 4 - %p : pointer(주소값)
+
 	bool bIsStudent = true;
 	FString myIsStudentResult;
 	if (bIsStudent)
@@ -64,6 +66,35 @@ void AShootingPlayer::BeginPlay()
 	this->age2 = 2;
 	this->age3 = 3;
 	this->age4 = 4;
+
+
+	int32 normalNumber = 10;
+
+	int32* ptrNumber = &normalNumber;
+	float* ptrFloat = (float*)&normalNumber;
+
+	UE_LOG(LogTemp, Warning, TEXT("%d"), normalNumber);
+	UE_LOG(LogTemp, Warning, TEXT("%d"), ptrNumber);
+	UE_LOG(LogTemp, Warning, TEXT("%d"), *ptrNumber);
+	UE_LOG(LogTemp, Warning, TEXT("%d"), ptrFloat);
+	UE_LOG(LogTemp, Warning, TEXT("%d"), (int32)*ptrFloat);
+
+	int32 convertTest = (int32)(*ptrFloat);
+	UE_LOG(LogTemp, Warning, TEXT("%d"), convertTest);
+	UE_LOG(LogTemp, Warning, TEXT("%d"), convertTest);
+
+	convertTest = (int32)fNumber2;
+
+	int32 myNum = 3;
+
+	PrintSquare(myNum);
+	UE_LOG(LogTemp, Warning, TEXT("%d"), myNum);
+
+	PrintSquare2(myNum);
+	UE_LOG(LogTemp, Warning, TEXT("%d"), myNum);
+
+	PrintSquare3(&myNum);
+	UE_LOG(LogTemp, Warning, TEXT("%d"), myNum);
 }
 
 void AShootingPlayer::Tick(float DeltaTime)
@@ -99,8 +130,32 @@ int32 AShootingPlayer::AddTest(int32 num1, int32 num2)
 
 void AShootingPlayer::PrintInputNumber(int32 targetNum)
 {
-	for (int32 i = 0; i <= targetNum; i++)
+	// 1부터 targetNum 변수의 값까지 1씩 증가시키면서 반복적으로 수행한다.
+	// 반복적인 수행 -> 반복문(for문)
+	// for( 초기화 식; 중단조건식; 증감식)
+	// {
+	//		해야할 일
+	// }
+	// 수행할 일은 현재 증가된 값을 출력하는 것이다.
+
+	for (int32 i = 1; i <= targetNum; i++)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Number : %02d"), i);
+		UE_LOG(LogTemp, Warning, TEXT("TargetNumber : %02d"), i);
 	}
+}
+
+
+void AShootingPlayer::PrintSquare(int32 originNumber)
+{
+	originNumber *= originNumber;
+}
+
+void AShootingPlayer::PrintSquare2(int32& originNumber)
+{
+	originNumber *= originNumber;
+}
+
+void AShootingPlayer::PrintSquare3(int32* originNumber)
+{
+	*originNumber *= *originNumber;
 }
